@@ -19,6 +19,6 @@ def index(request):
         # Your context data here
     }
     html_template = loader.get_template("home/index.html")
-    return HttpResponse(html_template.render(context, request))
+    # return HttpResponse(html_template.render(context, request))
 
-    # return render(request, 'home/index.html', context)
+    return render(request, 'home/index.html', context)
