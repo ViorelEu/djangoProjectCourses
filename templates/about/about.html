@@ -1,67 +1,72 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <table class="table">
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-        </tr>
-        </tbody>
-    </table>
 
-    <table class="table">
-        <thead class="thead-light">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-        </tr>
-        </tbody>
-    </table>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mx-auto text-center"> <!-- Added "mx-auto" and "text-center" classes -->
+            <br><br><br>
+
+<div class="col-md-12">
+            <h2>Our Mission</h2>
+            <p>Our mission is to empower individuals like you to unlock your full potential through education. We believe that knowledge is a powerful tool, and our courses are designed to help you acquire new skills, gain insights, and achieve your personal and professional goals.</p>
+
+            <!-- "Who We Are" Section -->
+            <section id="who-we-are" class="py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h2 class="mb-4">Who We Are</h2>
+                            <p>We are a dedicated team of educators, subject matter experts, and technologists who are passionate about learning and its transformative power. Our team is committed to creating high-quality, engaging, and accessible courses that cater to a wide range of interests and skill levels.</p>
+                            <p>With years of experience and a shared mission to make education accessible to all, we strive to empower learners like you to achieve your goals, acquire new knowledge, and thrive in your chosen fields.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="{% static 'assets/img/course-details-tab-1.png' %}" class="img-fluid" alt="Team Image">
+                        </div>
+                    </div>
+                </div>
+            </section>
+</div>
+
+
+
+
+            <!-- Why Us Section (entirely on the left) -->
+            <section id="why-us" class="why-us">
+                <div class="container" data-aos="fade-up">
+                    <div class="row">
+                        <div class="col-lg-12 d-flex align-items-stretch">
+                            <div class="content">
+                                <h3>Why Choose Us?</h3>
+                                <p>
+                                    At your Course, we understand that choosing the right platform for your
+                                    learning journey is crucial. Here's why you should choose us:
+                                </p>
+                                <ul>
+                                    <li><i class="bx bx-check"></i> Expert Instructors: Our courses are taught by industry
+                                        experts committed to providing you with the best learning experience.</li>
+                                    <li><i class="bx bx-check"></i> Flexible Learning: Life can be busy, so we offer flexible
+                                        learning options. You can study at your own pace, anytime and anywhere.</li>
+                                    <li><i class="bx bx-check"></i> Interactive Content: Our courses feature a variety of
+                                        multimedia resources, including videos, quizzes, assignments, and discussion forums to
+                                        keep you engaged and motivated.</li>
+                                    <li><i class="bx bx-check"></i> Supportive Community: Join a community of like-minded
+                                        learners, where you can connect, collaborate, and learn from each other.</li>
+                                </ul>
+                                <div class="text-center">
+                                    <a href="{% url 'about' %}" class="more-btn">Learn More <i
+                                            class="bx bx-chevron-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add more columns if needed -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
 
 {% block custome_banner_content %}
@@ -69,4 +74,3 @@
     <h2>This is a section about our services</h2>
     <a href="{% url 'index' %}" class="btn-get-started">Enrol me</a>
 {% endblock %}
-

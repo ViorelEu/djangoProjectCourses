@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load  static  %}
+
+{% block title %} View details - {{ course }} {% endblock %}
+
+{% block content %}
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <br><br>
+                <div class="card text-center">
+                    <div class="card-header">
+
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ course.title }}</h5>
+                        <a href="{% url 'course-detail' course.id %}" class="btn btn-primary">Cancel</a>
+                    </div>
+                    <div>Descriere curs: {{ course.description }}</div>
+                    <div class="card-footer text-body-secondary">
+                       Created at: {{ student.created_at|date:"d-m-Y H:i:s" }} / Updated at: {{ student.updated_at|date:"d-m-Y H:i:s" }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

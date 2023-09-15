@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+ <h1>All Courses</h1>
+    <ul>
+        {% for course in courses %}
+        <li>
+            <a href="{% url 'course-detail' course.id %}">{{ course.title }}</a><br>
+            <strong>Description:</strong> {{ course.description }}<br>
+            <strong>Instructor:</strong> {{ course.instructor }}<br>
+            <strong>Start Date:</strong> {{ course.start_date }}<br>
+            <strong>Duration (weeks):</strong> {{ course.duration_in_weeks }}<br>
+            <strong>Price:</strong> ${{ course.price }}
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'course-list' %}">Create New Course</a>
+
+
+{% endblock %}
