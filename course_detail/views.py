@@ -18,7 +18,7 @@ def course_detail(request):
     context = {
         # Your context data here
     }
-    html_template = loader.get_template("home/course-details.html")
+    html_template = loader.get_template("course-details/course-details.html")
     # return HttpResponse(html_template.render(context, request))
 
-    return render(request, 'home/course-details.html', context)
+    return render(request, 'course-details/course-details.html', context)

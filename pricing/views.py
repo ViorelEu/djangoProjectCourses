@@ -18,7 +18,7 @@ def pricing(request):
     context = {
         # Your context data here
     }
-    html_template = loader.get_template("home/pricing.html")
+    html_template = loader.get_template("pricing/pricing.html")
     # return HttpResponse(html_template.render(context, request))
 
-    return render(request, 'home/pricing.html', context)
+    return render(request, 'pricing/pricing.html', context)

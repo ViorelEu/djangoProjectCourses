@@ -18,7 +18,7 @@ def events(request):
     context = {
         # Your context data here
     }
-    html_template = loader.get_template("home/events.html")
+    html_template = loader.get_template("events/events.html")
     # return HttpResponse(html_template.render(context, request))
 
-    return render(request, 'home/events.html', context)
+    return render(request, 'events/events.html', context)

@@ -13,7 +13,7 @@
                         {% if trainer.profile %}
                             <img src="{{ trainer.profile.url }}" class="card-img-top" alt="Poza nu exista!">
                          {% else %}
-                            <img src="{% static 'assets/img/trainers/00007-3647593057.png' %}" class="card-img-top" alt="Poza nu exista">
+                            <img src="{% static '/profile/00007-3647593057.png' %}" class="card-img-top" alt="Poza nu exista">
                         {% endif %}
                         <div class="card-body">
                             <h5 class="card-title">
@@ -34,7 +34,12 @@
                                     <li><a class="dropdown-item" href="{% url 'update-trainer' trainer.id %}">Update</a></li>
                                     <li><a class="dropdown-item" href="{% url 'delete-trainer' trainer.id %}">Delete</a></li>
                                     <li><a class="dropdown-item" href="{% url 'detail-trainer' trainer.id %}">Detail</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'create-trainer' %}">Create a new trainer</a></li>
                                 </ul>
+                                  <ul class="dropdown-menu">
+
+
+                    </ul>
                             </div>
                         </div>
                     </div>

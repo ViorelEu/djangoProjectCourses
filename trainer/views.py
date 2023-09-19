@@ -1,13 +1,22 @@
 from datetime import datetime
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render
+from django.template import loader
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView
 
 from trainer.forms import TrainerForm
 from trainer.models import Trainer
 
+def trainer(request):
+    context = {
+        # Your context data here
+    }
+    html_template = loader.get_template("trainer/trainers.html")
+    # return HttpResponse(html_template.render(context, request))
 
+    return render(request, 'trainer/trainers.html', context)
 class TrainerCreateView(CreateView):
     template_name = 'trainer/trainer_page.html'
     model = Trainer

@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'events',
     'pricing',
     'trainer',
+    'userextend',
+    'student',
 
 ]
 
@@ -74,6 +76,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                'djangoProjectCourses.context_processors.get_all_trainers',
+
             ],
         },
     },
@@ -136,7 +140,20 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/' # specificam prefixul unde vrem sa fie redirectionat utilizatorul dupa ce se autentifica
+LOGOUT_REDIRECT_URL = '/login/' # specificam prexiul unde vrem sa fie redirection utilizatorul dupa delogare
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'mail.aplicatiedjangocourses.ro'
+EMAIL_HOST_USER = 'courses@aplicatiedjango.ro'
+EMAIL_HOST_PASSWORD = 'Django1234!'
+EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL = 'course@aplicatiedjango.ro'

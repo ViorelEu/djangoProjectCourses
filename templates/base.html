@@ -42,51 +42,46 @@
                 <li><a href="{% url 'about' %}">About</a></li>
                 <li><a href="{% url 'course-list' %}">Courses</a></li>
                 <li><a class="active" href="{% url 'list-of-trainers' %}">Trainers</a></li>
-                <li><a href="{% url 'events' %}">Events</a></li>
+                <li><a href="{% url 'list-of-students' %}">Events</a></li>
                 <li><a href="{% url 'pricing' %}">Pricing</a></li>
-
-
-                    </a>
                     <ul class="dropdown-menu">
-                        {% for trainer in trainers %}
-                            <li><a class="dropdown-item" href="{% url 'detail-trainer' trainer.id %}">{{ trainer }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Trainer
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'create-trainer' %}">Create a new trainer</a></li>
+                        <li><a class="dropdown-item" href="{% url 'list-of-students' %}">Students</a></li>
+                        <li><a class="dropdown-item" href="{% url 'create-student' %}">Create a new student</a></li>
 
                     </ul>
+
+
+                </a>
+                <ul class="dropdown-menu">
+                    {% for trainer in trainers %}
+                        <li><a class="dropdown-item" href="{% url 'detail-trainer' trainer.id %}">{{ trainer }}</a></li>
+                    {% endfor %}
+                </ul>
                 </li>
 
-                <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-                    <ul>
-                        <li><a href="#">Drop Down 1</a></li>
-                        <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                            <ul>
-                                <li><a href="#">Deep Drop Down 1</a></li>
-                                <li><a href="#">Deep Drop Down 2</a></li>
-                                <li><a href="#">Deep Drop Down 3</a></li>
-                                <li><a href="#">Deep Drop Down 4</a></li>
-                                <li><a href="#">Deep Drop Down 5</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Drop Down 2</a></li>
-                        <li><a href="#">Drop Down 3</a></li>
-                        <li><a href="#">Drop Down 4</a></li>
-                    </ul>
-                </li>
+
                 <li><a href="{% url 'contact' %}">Contact</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
+            </li>
+           <div>
+{#                    <a href="{% url 'logout' %}" class="btn btn-outline-secondary">Logout, {{ user.username }}</a>#}
+                </div>
+
+
+                <div>
+                    <a href="{% url 'login' %}" class="btn btn-outline-primary">Login</a>
+                    <a href="{% url 'create-user' %}" class="btn btn-outline-secondary">Sign up</a>
+                </div>
+
+
+
+            <form class="d-flex" method="get" action="{% url 'search' %}" role="search">
+                <input name="filter" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
         </nav><!-- .navbar -->
 
-        <a href="{% url 'course' %}" class="get-started-btn">Get Started</a>
 
     </div>
 </header><!-- End Header -->
