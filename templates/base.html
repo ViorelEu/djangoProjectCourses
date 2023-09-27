@@ -25,8 +25,6 @@
 
 </head>
 <body>
-
-
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
@@ -42,44 +40,39 @@
                 <li><a href="{% url 'about' %}">About</a></li>
                 <li><a href="{% url 'course-list' %}">Courses</a></li>
                 <li><a class="active" href="{% url 'list-of-trainers' %}">Trainers</a></li>
-                <li><a href="{% url 'list-of-students' %}">Events</a></li>
+                <li><a href="{% url 'events' %}">Events</a></li>
                 <li><a href="{% url 'pricing' %}">Pricing</a></li>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'list-of-students' %}">Students</a></li>
-                        <li><a class="dropdown-item" href="{% url 'create-student' %}">Create a new student</a></li>
-
-                    </ul>
-
-
-                </a>
-                <ul class="dropdown-menu">
-                    {% for trainer in trainers %}
-                        <li><a class="dropdown-item" href="{% url 'detail-trainer' trainer.id %}">{{ trainer }}</a></li>
-                    {% endfor %}
-                </ul>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li>
+                    <form class="d-flex" method="get" action="{% url 'search' %}" role="search">
+                        <input name="filter" class="form-control me-2" type="search" placeholder="Search"
+                               aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
                 </li>
 
-
-                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li style="padding-left:15px;">
+                    <!-- Example single danger button -->
+                    <div class="dropdown">
+                        <a role="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown"
+                           aria-expanded="false" id="profile_button">
+                            {{ user.get_username }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="profile_button">
+                            {% if user.is_authenticated %}
+                                <div>
+                                   <a href="{% url 'logout' %}" class="btn btn-outline-secondary">Logout, {{ user.username }}</a>
+                                </div>
+                            {% else %}
+                                <div>
+                                     <a href="{% url 'login' %}" class="btn btn-outline-primary">Login</a>
+                                     <a href="{% url 'create-user' %}" class="btn btn-outline-secondary">Sign up</a>
+                                </div>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </li>
             </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-            </li>
-           <div>
-{#                    <a href="{% url 'logout' %}" class="btn btn-outline-secondary">Logout, {{ user.username }}</a>#}
-                </div>
-
-
-                <div>
-                    <a href="{% url 'login' %}" class="btn btn-outline-primary">Login</a>
-                    <a href="{% url 'create-user' %}" class="btn btn-outline-secondary">Sign up</a>
-                </div>
-
-
-
-            <form class="d-flex" method="get" action="{% url 'search' %}" role="search">
-                <input name="filter" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
         </nav><!-- .navbar -->
 
 

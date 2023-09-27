@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'trainer',
     'userextend',
     'student',
+    'order',
+    'cart',
 
 ]
 
@@ -60,6 +62,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+
 ]
 
 ROOT_URLCONF = "djangoProjectCourses.urls"
@@ -152,8 +155,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-EMAIL_HOST = 'mail.aplicatiedjangocourses.ro'
-EMAIL_HOST_USER = 'courses@aplicatiedjango.ro'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'bulgaru.viorel.tudor@gmail.com '
 EMAIL_HOST_PASSWORD = 'Django1234!'
 EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = 'course@aplicatiedjango.ro'
+# DEFAULT_FROM_EMAIL = 'gmail.com'

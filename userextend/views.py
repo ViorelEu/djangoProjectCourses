@@ -9,7 +9,8 @@ from django.views.generic import CreateView
 
 from djangoProjectCourses.settings import EMAIL_HOST_USER
 from userextend.forms import UserForm
-
+from django.contrib.auth import logout
+from django.shortcuts import redirect
 import random
 
 from userextend.models import History
@@ -69,3 +70,12 @@ class UserCreateView(CreateView):
             mail.send()
 
             return redirect('login')
+
+
+
+
+
+def custom_logout(request):
+
+    logout(request)
+    return redirect('index')

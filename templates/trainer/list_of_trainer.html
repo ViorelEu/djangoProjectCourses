@@ -4,7 +4,17 @@
 
 {% block content %}
 
+    <div class="breadcrumbs">
+        <div class="container">
+            <h2>Trainers</h2>
+            <p>Meet our dedicated team of expert trainers who are passionate about sharing their knowledge and helping
+                you
+                achieve your learning goals. Our trainers bring a wealth of experience to the table, ensuring you get
+                the
+                best learning experience possible.</p>
+        </div>
 
+    </div><!-- End Breadcrumbs -->
     <div class="container-fluid col-md-12">
         <div class="row">
             {% for trainer in all_trainers %}
@@ -12,8 +22,9 @@
                     <div class="card">
                         {% if trainer.profile %}
                             <img src="{{ trainer.profile.url }}" class="card-img-top" alt="Poza nu exista!">
-                         {% else %}
-                            <img src="{% static '/profile/00007-3647593057.png' %}" class="card-img-top" alt="Poza nu exista">
+                        {% else %}
+                            <img src="{% static '/profile/00007-3647593057.png' %}" class="card-img-top"
+                                 alt="Poza nu exista">
                         {% endif %}
                         <div class="card-body">
                             <h5 class="card-title">
@@ -31,15 +42,19 @@
                                     More actions
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{% url 'update-trainer' trainer.id %}">Update</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'delete-trainer' trainer.id %}">Delete</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'detail-trainer' trainer.id %}">Detail</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'create-trainer' %}">Create a new trainer</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'update-trainer' trainer.id %}">Update</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="{% url 'delete-trainer' trainer.id %}">Delete</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="{% url 'detail-trainer' trainer.id %}">Detail</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="{% url 'create-trainer' %}">Create a new
+                                        trainer</a></li>
                                 </ul>
-                                  <ul class="dropdown-menu">
+                                <ul class="dropdown-menu">
 
 
-                    </ul>
+                                </ul>
                             </div>
                         </div>
                     </div>

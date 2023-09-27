@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <h2>Associate Subscriptions with {{ course.title }}</h2>
+  <form method="post">
+    {% csrf_token %}
+    <ul>
+      {% for subscription in subscriptions %}
+        <li>
+          <label>
+            <input type="checkbox" name="subscriptions" value="{{ subscription.id }}">
+            {{ subscription.title }} - ${{ subscription.price }}
+          </label>
+        </li>
+      {% endfor %}
+    </ul>
+    <button type="submit">Associate Subscriptions</button>
+  </form>
+  <a href="{% url 'course-detail' pk=course.id %}">Back to Course Detail</a>
+{% endblock %}

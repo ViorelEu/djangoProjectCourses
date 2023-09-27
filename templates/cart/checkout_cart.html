@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h2>Checkout</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart.items %}
+            <tr>
+                <td>
+                    <div class="cart-item">
+                        <img src="{{ item.image.url }}" alt="{{ item.title }}" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <span class="cart-item-title">{{ item.title }}</span>
+                        </div>
+                    </div>
+                </td>
+                <td>${{ item.price }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2">Your cart is empty.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="cart-total">
+        <p class="lead">Total Price: ${{ cart.total_price }}</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Place Order</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

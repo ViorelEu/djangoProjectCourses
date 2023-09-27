@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Your Cart</h2>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    {% if cart.items %}
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Course</th>
+                                <th>Price</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for course in cart.items %}
+                            <tr>
+                                <td>
+                                    <div class="media">
+                                        <img src="{{ course.image.url }}" alt="{{ course.title }}" class="mr-3" width="100">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">{{ course.title }}</h5>
+
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>${{ course.price }}</td>
+                                <td>
+                                    <a href="{% url 'remove_from_cart' course.id %}" class="btn btn-danger btn-sm">Remove</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <p>Your cart is empty.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Order Summary</h5>
+                    <p class="card-text">Total Price: ${{ cart.total_price }}</p>
+                    {# Include a checkout button if needed #}
+                     <a href="{% url 'checkout' %}" class="btn btn-success btn-block">Proceed to Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
