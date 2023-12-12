@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from pricing.models import Subscription
 # added comment
 # add new row
+# added second comment
 class Tag(models.Model):
     name = models.CharField(max_length=50)
 
