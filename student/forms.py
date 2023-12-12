@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import TextInput, NumberInput, EmailInput, Textarea, DateInput, Select
+from django.forms import TextInput, NumberInput, EmailInput, Textarea, DateInput, Select, FileInput
 
 from student.models import Student
 
@@ -9,7 +9,7 @@ class StudentForm(forms.ModelForm):
         model = Student
         #fields = '__all__' luam toate fieldurile din model si le afisam in ordinea scrisa in model
         fields = ['first_name', 'last_name', 'age', 'email', 'description',  'active',
-                  'start_date', 'end_date', 'gender', "trainer", "profile"] # specificam fieldurile dorite in formular si ordinea lor
+                  'start_date', 'end_date', 'gender', "trainer"] # specificam fieldurile dorite in formular si ordinea lor
 
         widgets = {
             'first_name': TextInput(attrs={'class': 'form-control', 'placeholder': 'Please enter your first name'}),
@@ -21,7 +21,8 @@ class StudentForm(forms.ModelForm):
             'start_date': DateInput(attrs={'class': 'form-control', 'type': 'date'}),  # type -> datetime-local
             'end_date': DateInput(attrs={'class': 'form-control', 'type': 'date'}),  # type -> datetime-local
             'gender': Select(attrs={'class': 'form-select'}),
-            'trainer': Select(attrs={'class': 'form-select'})
+            'trainer': Select(attrs={'class': 'form-select'}),
+            'profile': FileInput(attrs={'class': 'form-select'})
         }
 
 
@@ -59,7 +60,7 @@ class StudentUpdateForm(forms.ModelForm):
         model = Student
         #fields = '__all__' luam toate fieldurile din model si le afisam in ordinea scrisa in model
         fields = ['first_name', 'last_name', 'age', 'email', 'description',  'active',
-                  'start_date', 'end_date', 'gender', "trainer", "profile"] # specificam fieldurile dorite in formular si ordinea lor
+                  'start_date', 'end_date', 'gender', "trainer", ] # specificam fieldurile dorite in formular si ordinea lor
 
         widgets = {
             'first_name': TextInput(attrs={'class': 'form-control', 'placeholder': 'Please enter your first name'}),

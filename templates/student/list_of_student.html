@@ -1,118 +1,75 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} Student List {% endblock %}
+{% block title %} List of Students {% endblock %}
 
 {% block content %}
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
 
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="breadcrumbs">
+        <div class="container">
+            <h2>Students</h2>
+            <p>Meet our dedicated team of students who are passionate about learning and achieving their goals.</p>
+        </div>
+    </div><!-- End Breadcrumbs -->
+
+    <div class="container-fluid col-md-12">
+        <div class="row">
+            {% for student in all_students %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            {% if student.profile %}
+                                <img src="{{ student.profile.url }}" class="card-img-top" alt="Profile Picture">
+                            {% else %}
+                                <img src="{% static '/profile/student.png' %}" class="card-img-top"
+                                     alt="Default Profile Picture">
+                            {% endif %}
+                            <h5 class="card-title">
+                                {{ student.first_name }} {{ student.last_name }}
+                            </h5>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    More actions
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{% url 'update-student' student.id %}">Update</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="{% url 'delete-student' student.id %}">Delete</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="{% url 'detail-student' student.id %}">Detail</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="{% url 'create-student' %}">Create a new student</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                {% endfor %}
-            {% endif %}
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Profile</th>
-                        <th>First name</th>
-                        <th>Last name</th>
-                        <th>Email</th>
-                        <th>Start date</th>
-                        <th>End date</th>
-                        <th>Active</th>
-                        <th>Gender</th>
-                        <th>Created at</th>
-                        <th>Name of trainer</th>
-                        <th>Course</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    {% for student in all_students %}
-                        <tr>
-                            <td> {{ forloop.counter0 }} </td>
-                            <td>
-                                {% if student.profile %}
-                                    <img src="{{ student.profile.url }}" style="width: 60px; height: 60px" alt="Profile Image">
-                                {% else %}
-                                    <img src="{% static 'images/default_profile.png' %}" style="width: 60px; height: 60px" alt="Profile Image">
-                                {% endif %}
-                            </td>
-                            <td> {{ student.first_name }} </td>
-                            <td> {{ student.last_name }} </td>
-                            <td> {{ student.email }} </td>
-                            <td> {{ student.start_date|date:"d-m-Y" }} </td>
-                            <td> {{ student.end_date|date:"d-m-Y" }} </td>
-                            <td>
-                                {% if student.active %}
-                                    Yes
-                                {% else %}
-                                    No
-                                {% endif %}
-                            </td>
-                            <td>
-                                {{ student.gender|upper }} {# upper, lower, title #}
-                            </td>
-                            <td>
-                                {{ student.created_at|date:"d-m-Y:i:s" }}
-                            </td>
-                            <td>
-                                {% if student.trainer %}
-                                    {{ student.trainer }}
-                                {% else %}
-                                    No trainer
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if student.trainer.course %}
-                                    {{ student.trainer.course }}
-                                {% else %}
-                                    No course
-                                {% endif %}
-                            </td>
-
-                            <td>
-                                {% with can_change_student=perms.student.change_student can_delete_student=perms.student.delete_student can_view_student=perms.student.view_student %}
-                                    {% if can_change_student or can_delete_student or can_view_student %}
-                                        <div class="dropdown">
-                                            <button class="btn btn-secondary dropdown-toggle" type="button"
-                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                More Actions
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                {% if can_change_student %}
-                                                    <li><a class="dropdown-item"
-                                                           href="{% url 'update-student' student.id %}">Update</a></li>
-                                                {% endif %}
-                                                {% if can_delete_student %}
-                                                    <li><a class="dropdown-item"
-                                                           href="{% url 'delete-student' student.id %}">Delete</a></li>
-                                                {% endif %}
-                                                <li><a class="dropdown-item"
-                                                       href="{% url 'detail-student' student.id %}">View Details</a></li>
-                                                <li><a class="dropdown-item"
-                                                       href="{% url 'create-student' %}">Create a new student</a></li>
-                                            </ul>
-                                        </div>
-                                    {% else %}
-                                        <p>No Actions</p>
-                                    {% endif %}
-                                {% endwith %}
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                </div>
+            {% endfor %}
         </div>
     </div>
-</div>
+
+    <!-- HistoryStudents -->
+    <div class="container-fluid col-md-12">
+        <div class="row">
+            {% for history_student in all_history_students %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                History Student: {{ history_student.user.username }}
+                            </h5>
+                            <p class="card-text">
+                                Created at: {{ history_student.created_at }} <br>
+                                Message: {{ history_student.message }} <br>
+                                Active: {{ history_student.active }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
 {% endblock %}

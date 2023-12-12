@@ -24,7 +24,6 @@
                                         <img src="{{ course.image.url }}" alt="{{ course.title }}" class="mr-3" width="100">
                                         <div class="media-body">
                                             <h5 class="mt-0">{{ course.title }}</h5>
-
                                         </div>
                                     </div>
                                 </td>
@@ -46,9 +45,10 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Order Summary</h5>
-                    <p class="card-text">Total Price: ${{ cart.total_price }}</p>
-                    {# Include a checkout button if needed #}
-                     <a href="{% url 'checkout' %}" class="btn btn-success btn-block">Proceed to Checkout</a>
+                    {% if cart.items %}
+                        <p class="card-text">Total Price: ${{ cart.total_price }}</p>
+                        <a href="{% url 'checkout' %}" class="btn btn-success btn-block">Proceed to Checkout</a>
+                    {% endif %}
                 </div>
             </div>
         </div>

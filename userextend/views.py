@@ -1,23 +1,18 @@
 from datetime import datetime
-
-
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
-
-from djangoProjectCourses.settings import EMAIL_HOST_USER
-from userextend.forms import UserForm
+from django.views.generic import CreateView, UpdateView, DetailView, DeleteView
+from django.shortcuts import render, redirect
 from django.contrib.auth import logout
-from django.shortcuts import redirect
-import random
-
+from django.contrib.auth.models import User
+from userextend.forms import UserForm
 from userextend.models import History
 from django.core.mail import send_mail
 from django.template.loader import get_template
 from django.core.mail import EmailMessage
-
+from djangoProjectCourses.settings import EMAIL_HOST_USER
+import random
 
 class UserCreateView(CreateView):
     template_name = 'userextend/create_user.html'
@@ -30,27 +25,16 @@ class UserCreateView(CreateView):
             new_user = form.save(commit=False)
             new_user.first_name = new_user.first_name.title()
             new_user.last_name = new_user.last_name.title()
-            # atribui valoarea new_user.first_name.title() campului first_name al obiectului new_user
             new_user.username = f'{new_user.first_name[0].lower()}{new_user.last_name.lower().replace(" ", "")}_{random.randint(100000, 999999)}'
             new_user.save()
 
-            # History
-
             get_message = (f'Userul a fost adaugat cu success. Username: {new_user.username}, email:{new_user.email}, '
                            f'first_name: {new_user.first_name}, last_name:{new_user.last_name}')
-
             History.objects.create(message=get_message, created_at=datetime.now(), active=True)
-
-            # Trimire  mail FARA TEMPLATE
 
             subject = 'Adding a new account'
             message = f'Congratulations! Your username is: {new_user.username}.'
-            # send_mail() -> este o functie definita in cadrul framework -ului care faciliteaza trimitrea de emailuri
 
-            # send_mail(subject, message, 'george@popesc.ro', [new_user.email]) # o folositi cand in settings.py aveti console
-            # send_mail(subject, message, EMAIL_HOST_USER, [new_user.email])
-
-            # Trimire mail CU TEMPLATE
 
             details_user = {
                 'fullname': f'{new_user.first_name} {new_user.last_name}',
@@ -72,10 +56,8 @@ class UserCreateView(CreateView):
             return redirect('login')
 
 
+class UserProfile(DetailView):
+    model = User
+    template_name = 'userextend/userp_profile.html'
 
 
-
-def custom_logout(request):
-
-    logout(request)
-    return redirect('index')

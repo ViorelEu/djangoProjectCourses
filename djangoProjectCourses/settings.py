@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'home',
     'about',
-    'contact',
     'course_detail',
     'courses',
     'events',
@@ -51,6 +50,7 @@ INSTALLED_APPS = [
     'student',
     'order',
     'cart',
+    'django_extensions',
 
 ]
 
@@ -160,3 +160,8 @@ EMAIL_HOST_USER = 'bulgaru.viorel.tudor@gmail.com '
 EMAIL_HOST_PASSWORD = 'Django1234!'
 EMAIL_PORT = 587
 # DEFAULT_FROM_EMAIL = 'gmail.com'
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+'output': 'path/to/dot.exe'
+}

@@ -3,16 +3,16 @@
 
 {% block content %}
 
-
     <main id="main" data-aos="fade-in">
 
         <!-- ======= Breadcrumbs ======= -->
         <div class="breadcrumbs">
-           <div class="container">
-            <h2>Courses</h2>
-            <p>Explore our wide range of courses designed to help you succeed in your learning journey. Whether you're a
-                beginner or an expert, we have something for everyone.</p>
-        </div>
+            <div class="container">
+                <h2>Courses</h2>
+                <p>Explore our wide range of courses designed to help you succeed in your learning journey. Whether
+                    you're a
+                    beginner or an expert, we have something for everyone.</p>
+            </div>
         </div><!-- End Breadcrumbs -->
 
         <!-- ======= Courses Section ======= -->
@@ -23,25 +23,43 @@
                     {% for course in all_courses %}
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                             <div class="course-item">
-                                <img src="{% static 'assets/img/course-1.jpg' %}" class="img-fluid" alt="...">
+                                <img src="{{ course.profile.url }}" class="img-fluid" alt="...">
                                 <div class="course-content">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                         <h4>{{ course.title }}</h4>
-                                        <p class="price">$169</p>
+                                        <p class="price">{{ course.price }}</p>
                                     </div>
 
-                                    <h3><a href="{% url 'course-detail' course.id %}">Website Design</a></h3>
-                                    <p>{{ course.description }}</p>
+                                    <h3><a href="{% url 'course-detail' course.id %}">{{ course.title }}</a></h3>
                                     <div class="trainer d-flex justify-content-between align-items-center">
                                         <div class="trainer-profile d-flex align-items-center">
-                                            <img src="{% static 'assets/img/trainers/trainer-1.jpg' %}"
-                                                 class="img-fluid" alt="">
+                                            <img src="{{ course.instructor.profile.url }}"
+                                                 class="img-fluid" alt="{{ course.instructor }}">
                                             <span>{{ course.instructor }}</span>
                                         </div>
                                         <div class="trainer-rank d-flex align-items-center">
-                                            <i class="bx bx-user"></i>&nbsp;50
+                                            <i class="bx bx-user"></i>&nbsp;{{ course.purchases }}
                                             &nbsp;&nbsp;
-                                            <i class="bx bx-heart"></i>&nbsp;65
+                                            <i class="bx bx-heart"></i>&nbsp;{{ course.likes }}
+                                        </div>
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                More actions
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="{% url 'course-update' course.id %}">Update</a>
+                                                </li>
+                                                <li><a class="dropdown-item" href="{% url 'course-delete' course.id %}">Delete</a>
+                                                </li>
+                                                <li><a class="dropdown-item" href="{% url 'course-detail' course.id %}">Detail</a>
+                                                </li>
+                                                <li>
+                                                    <div class="dropdown-item buy-new-course">
+                                                        <a href="{% url 'add_to_cart' course.id %}">Buy new course</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -56,8 +74,6 @@
 
     </main><!-- End #main -->
 
-
     </html>
 
 {% endblock %}
-

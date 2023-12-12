@@ -6,7 +6,7 @@ class Trainer(models.Model):
     departament_options=(
         ("Backend", 'backend'),
         ("Frontend", 'frontend'),
-        ("Network", 'networtk')
+        ("Network", 'network')
 
     )
     first_name = models.CharField(max_length=20)

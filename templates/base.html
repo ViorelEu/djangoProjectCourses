@@ -31,18 +31,19 @@
 
         <h1 class="logo me-auto"><a href="{% url 'index' %}">Learning Platform</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="{% url 'index' %}" class="logo me-auto"><img src="{% static 'assets/img/course-1.jpg' %}" alt=""
+        <a href="{% url 'index' %}" class="logo me-auto"><img src="{% static 'assets/img/logo for platfo 0 (1).png' %}"
+                                                              alt=""
                                                               class="img-fluid"></a>
 
         <nav id="navbar" class="navbar order-last order-lg-0">
             <ul>
                 <li><a href="{% url 'index' %}">Home</a></li>
                 <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'list-of-students' %}">Student</a></li>
                 <li><a href="{% url 'course-list' %}">Courses</a></li>
-                <li><a class="active" href="{% url 'list-of-trainers' %}">Trainers</a></li>
+                <li><a href="{% url 'list-of-trainers' %}">Trainers</a></li>
                 <li><a href="{% url 'events' %}">Events</a></li>
                 <li><a href="{% url 'pricing' %}">Pricing</a></li>
-                <li><a href="{% url 'contact' %}">Contact</a></li>
                 <li>
                     <form class="d-flex" method="get" action="{% url 'search' %}" role="search">
                         <input name="filter" class="form-control me-2" type="search" placeholder="Search"
@@ -61,12 +62,13 @@
                         <ul class="dropdown-menu" aria-labelledby="profile_button">
                             {% if user.is_authenticated %}
                                 <div>
-                                   <a href="{% url 'logout' %}" class="btn btn-outline-secondary">Logout, {{ user.username }}</a>
+                                    <a href="{% url 'logout' %}"
+                                       class="btn btn-outline-secondary">Logout, {{ user.username }}</a>
                                 </div>
                             {% else %}
                                 <div>
-                                     <a href="{% url 'login' %}" class="btn btn-outline-primary">Login</a>
-                                     <a href="{% url 'create-user' %}" class="btn btn-outline-secondary">Sign up</a>
+                                    <a href="{% url 'login' %}" class="btn btn-outline-primary">Login</a>
+                                    <a href="{% url 'create-user' %}" class="btn btn-outline-secondary">Sign up</a>
                                 </div>
                             {% endif %}
                         </ul>
@@ -85,7 +87,7 @@
     <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
         {% block custome_banner_content %}
             <h1>Learning Today,<br>Leading Tomorrow</h1>
-            <h2>We are team of talented designers making websites with Bootstrap</h2>
+            <h2>Explore the Unknown, Embrace the Unseen: Your Journey to Wisdom Begins Here.</h2>
             <a href="{% url 'course-create' %}" class="btn-get-started">Get Started</a>
         {% endblock %}
     </div>

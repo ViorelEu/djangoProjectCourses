@@ -23,14 +23,12 @@ class Student(models.Model):
     active = models.BooleanField(default=True)
     gender = models.CharField(max_length=6, choices=gender_options)
     trainer = models.ForeignKey(Trainer, on_delete=models.CASCADE, null=True)
-    profile = models.ImageField(upload_to='profile_student/', null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
 
     #auto_now_add= stocheaza data si ora cand a fost adaugata inregistrea. Nu se mai modifica
     #auto_now = stocheaza data si ora cand a fost adaugata inregistrarea. Se modifica data atunci cand se fac modificari/inregistrare
-
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
 

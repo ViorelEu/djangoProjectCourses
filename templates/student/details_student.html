@@ -5,7 +5,6 @@
 
 {% block content %}
 
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 offset-md-3">
@@ -14,22 +13,31 @@
                     <div class="card-header">
                         {% if student.profile %}
                             <img src="{{ student.profile.url }}" style="width: 60px; height: 60px"
-                                 alt="nu exista imagine">
+                                 alt="Profile Picture">
                         {% elif  student.gender == 'male' %}
-                            <img src="{% static 'images/img_1.png' %}" style="width: 60px; height: 60px"
-                                 alt="nu exista imagine">
+                            <img src="{% static '/images/img_1.png' %}" style="width: 60px; height: 60px"
+                                 alt="Default Male Picture">
                         {% elif student.gender == 'female' %}
-                            <img src="{% static 'images/img.png' %}" style="width: 60px; height: 60px"
-                                 alt="nu exista imagine">
+                            <img src="{% static '/images/img.png' %}" style="width: 60px; height: 60px"
+                                 alt="Default Female Picture">
                         {% endif %}
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ student }}</h5>
                         <p class="card-text"><strong>Email:</strong> {{ student.email }}</p>
+                        <p class="card-text"><strong>Description:</strong> {{ student.description }}</p>
+                        <p class="card-text"><strong>Age:</strong> {{ student.age }}</p>
+                        <p class="card-text"><strong>Gender:</strong> {{ student.get_gender_display }}</p>
+                        <p class="card-text"><strong>Start Date:</strong> {{ student.start_date }}</p>
+                        <p class="card-text"><strong>End Date:</strong> {{ student.end_date }}</p>
+                        <p class="card-text"><strong>Active:</strong> {{ student.active }}</p>
+                        {% if student.trainer %}
+                            <p class="card-text"><strong>Trainer:</strong> {{ student.trainer }}</p>
+                        {% endif %}
                         <a href="{% url 'list-of-students' %}" class="btn btn-primary">Cancel</a>
                     </div>
                     <div class="card-footer text-body-secondary">
-                       Created at: {{ student.created_at|date:"d-m-Y H:i:s" }} / Updated at: {{ student.updated_at|date:"d-m-Y H:i:s" }}
+                        Created at: {{ student.created_at|date:"d-m-Y H:i:s" }} / Updated at: {{ student.updated_at|date:"d-m-Y H:i:s" }}
                     </div>
                 </div>
             </div>

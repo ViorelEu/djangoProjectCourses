@@ -47,22 +47,22 @@
     <div class="row counters">
 
       <div class="col-lg-3 col-6 text-center">
-        <span data-purecounter-start="0" data-purecounter-end={{ course_count }} data-purecounter-duration="1" class="purecounter"></span>
+        <span data-purecounter-start="0" data-purecounter-end={{ student_count }} data-purecounter-duration="1" class="purecounter"></span>
         <p>Students</p>
       </div>
 
       <div class="col-lg-3 col-6 text-center">
-        <span data-purecounter-start="0" data-purecounter-end="80" data-purecounter-duration="1" class="purecounter"></span>
+        <span data-purecounter-start="0" data-purecounter-end="{{ course_count }}" data-purecounter-duration="1" class="purecounter"></span>
         <p>Courses</p>
       </div>
 
       <div class="col-lg-3 col-6 text-center">
-        <span data-purecounter-start="0" data-purecounter-end="60" data-purecounter-duration="1" class="purecounter"></span>
+        <span data-purecounter-start="0" data-purecounter-end="{{ event_count }}" data-purecounter-duration="1" class="purecounter"></span>
         <p>Events</p>
       </div>
 
       <div class="col-lg-3 col-6 text-center">
-        <span data-purecounter-start="0" data-purecounter-end="25" data-purecounter-duration="1" class="purecounter"></span>
+        <span data-purecounter-start="0" data-purecounter-end="{{ trainer_count }}" data-purecounter-duration="1" class="purecounter"></span>
         <p>Trainers</p>
       </div>
 
@@ -221,16 +221,17 @@
                 </div>
 
                 <h3><a href="{% url 'course-list'%}">Website Design</a></h3>
-                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
+                <p>
+Design is the art of creating visually appealing and purposeful solutions. It involves thoughtful consideration of form, function, and aesthetics to convey ideas or solve problems in a visually impactful way..</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
                     <img src="{% static "assets/img/trainers/trainer-1.jpg"%}" class="img-fluid" alt="">
                     <span>Antonio</span>
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;50
+                    <i class="bx bx-user"></i>&nbsp;{{ course.purchases }}
                     &nbsp;&nbsp;
-                    <i class="bx bx-heart"></i>&nbsp;65
+                    <i class="bx bx-heart"></i>&nbsp;{{ course.likes }}
                   </div>
                 </div>
               </div>
@@ -247,16 +248,16 @@
                 </div>
 
                 <h3><a href="{% url 'course-list' %}">Search Engine Optimization</a></h3>
-                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
+                <p>Search Engine Optimization (SEO) is the strategic practice of optimizing online content to enhance its visibility and ranking in search engine results. It involves techniques and tactics aimed at improving a website's relevance and authority, ultimately driving organic traffic and increasing its chances of being discovered by users searching for related topics or products..</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
                     <img src="{% static 'assets/img/trainers/trainer-2.jpg'%}" class="img-fluid" alt="">
                     <span>Lana</span>
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;35
+                    <i class="bx bx-user"></i>&nbsp;{{ course.purchases }}
                     &nbsp;&nbsp;
-                    <i class="bx bx-heart"></i>&nbsp;42
+                    <i class="bx bx-heart"></i>&nbsp;{{ course.likes }}
                   </div>
                 </div>
               </div>
@@ -273,16 +274,16 @@
                 </div>
 
                 <h3><a href="{% url 'course-list' %}">Copywriting</a></h3>
-                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
+                <p>Copywriting is the art and skill of crafting persuasive and compelling written content for various purposes, such as advertising, marketing, or informational materials. A copywriter's goal is to create text that not only informs but also engages and persuades the audience to take a specific action, whether it's making a purchase, signing up for a newsletter, or clicking on a link. Effective copywriting involves understanding the target audience, conveying a clear message, and using language that resonates with and motivates the reader.</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
                     <img src="{% static 'assets/img/trainers/trainer-3.jpg'%}" class="img-fluid" alt="">
                     <span>Brandon</span>
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;20
+                    <i class="bx bx-user"></i>&nbsp;{{ course.purchases }}
                     &nbsp;&nbsp;
-                    <i class="bx bx-heart"></i>&nbsp;85
+                    <i class="bx bx-heart"></i>&nbsp;{{ course.likes }}
                   </div>
                 </div>
               </div>
@@ -303,10 +304,10 @@
             <div class="member">
               <img src="{% static 'assets/img/trainers/trainer-1.jpg'%}" class="img-fluid" alt="">
               <div class="member-content">
-                <h4>Walter White</h4>
+                <h4>Max Velocity</h4>
                 <span>Web Development</span>
                 <p>
-                  Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
+                   Max Velocity is a Dynamic Content Dynamo. As a Content Acceleration Specialist, his mission is to propel brands to new heights through his expert copywriting skills. From crafting compelling product descriptions that captivate customers to developing engaging marketing campaigns that skyrocket engagement, Max brings words to life.
                 </p>
                 <div class="social">
                   <a href=""><i class="bi bi-twitter"></i></a>
@@ -325,8 +326,7 @@
                 <h4>Sarah Jhinson</h4>
                 <span>Marketing</span>
                 <p>
-                  Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
-                </p>
+ As a Market Fusion Maestro, her role is to weave enchanting narratives and strategic messages that set brands aglow in the competitive marketplace. From curating captivating social media campaigns that spark conversations to developing content that resonates with diverse audiences, Stella brings a touch of brilliance to every project.                 </p>
                 <div class="social">
                   <a href=""><i class="bi bi-twitter"></i></a>
                   <a href=""><i class="bi bi-facebook"></i></a>
@@ -341,11 +341,10 @@
             <div class="member">
               <img src="{% static 'assets/img/trainers/trainer-3.jpg'%}" class="img-fluid" alt="">
               <div class="member-content">
-                <h4>William Anderson</h4>
+                <h4> Ethan Express</h4>
                 <span>Content</span>
                 <p>
-                  Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
-                </p>
+As a Content Acceleration Engineer, his expertise lies in generating dynamic and impactful content that propels brands forward. Whether it's crafting compelling blog posts, producing shareable social media content, or developing engaging website copy, Ethan accelerates brand messaging to reach new heights.                 </p>
                 <div class="social">
                   <a href=""><i class="bi bi-twitter"></i></a>
                   <a href=""><i class="bi bi-facebook"></i></a>
